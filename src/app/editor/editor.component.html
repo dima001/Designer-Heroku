@@ -1,3 +1,14 @@
-<p>
-  editor works!
-</p>
+<div>
+  <span>Height:</span>
+  <input value={{height}} #heightIn> 
+  <span>Width:</span>
+  <input value={{width}} #widthIn>
+  <span>Left:</span>
+  <input value={{position}} #leftIn>
+  <span>Top:</span>
+  <input value={{top}} #topIn>
+  <span>Image:</span>
+  <span><input>
+  <button>Uploud</button></span>
+  <button (click)="applyClick(heightIn.value, widthIn.value, leftIn.value, topIn.value)">Apply</button>
+</div>

@@ -1,3 +1,17 @@
-<p>
-  element-designer works!
-</p>
+  <ul *ngFor="let item of data">
+      <img src={{item.image}} alt="element"  [style.height.px]="item.height" 
+      [style.width.px]="item.width" [style.position]= "absolute" [style.left.px]="item.position" [style.top.px]="item.top"
+      (click)="elementClick(item.id)">
+  </ul>
+
+  <button (click)="addButtonClick()">
+    + Add
+  </button>
+  <button (click)="exportClick()">
+    Export
+  </button>
+  <editor *ngIf="edit" (notify)='onEditOff($event)' [height]='selectedItem.height'
+  [width]='selectedItem.width'
+  [position]='selectedItem.position'
+  [top]='selectedItem.top'></editor>
+

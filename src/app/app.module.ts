@@ -1,3 +1,4 @@
+import { ElementsService } from './elements-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,7 +17,7 @@ import { EditorComponent } from './editor/editor.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ElementsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
