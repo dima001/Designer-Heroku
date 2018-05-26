@@ -30,6 +30,7 @@ export class ElementDesignerComponent implements OnInit {
 
   onEditOff(message:string):void{
     this.edit=false;
+    this.selectedItem = null;
   }
 
   exportClick(){

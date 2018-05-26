@@ -1,6 +1,7 @@
 import { ElementsService } from './../elements-service.service';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Server } from 'selenium-webdriver/safari';
 
 @Component({
   selector: 'editor',
@@ -12,6 +13,8 @@ export class EditorComponent implements OnInit {
   @Input() width: number;
   @Input() position: number;
   @Input() top: number;
+  @Input() id: number;
+
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
 
@@ -19,13 +22,20 @@ export class EditorComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.height);
+    console.log(this.id);
 
   }
 
-  applyClick(height: Number, width: Number, position: Number, top: Number){
-    this.elementsService.add(height, width, position, top);
-    this.notify.emit("end edit mode");
+  applyClick(height: number, width: number, position: number, top: number){
+    if(this.id >= 0 ){
+      console.log(this.id);
+      this.elementsService.editById(this.id, height, width, position, top);
+    }
+    else{
+      console.log("else, id:"+ this.id);
+      this.elementsService.add(height, width, position, top);
+    }
+    this.notify.emit("apply button clicked");
 
   }
 
