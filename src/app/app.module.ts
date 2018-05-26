@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ElementDesignerComponent } from './element-designer/element-designer.component';
+import { EditorComponent } from './editor/editor.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ElementDesignerComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule
