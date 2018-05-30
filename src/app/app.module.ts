@@ -2,7 +2,7 @@ import { ElementsService } from './elements-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule} from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { ElementDesignerComponent } from './element-designer/element-designer.component';
 import { EditorComponent } from './editor/editor.component';
@@ -15,8 +15,7 @@ import { EditorComponent } from './editor/editor.component';
     EditorComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule
+    BrowserModule
   ],
   providers: [ElementsService],
   bootstrap: [AppComponent]

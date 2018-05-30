@@ -9,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ElementDesignerComponent implements OnInit {
   data: any[] = [];
   edit: boolean = false;
-  selectedItem: any = null;
+  selectedItem: any;
   height: number;
-  
   constructor(private elementsService: ElementsService) { }
 
   ngOnInit() {
@@ -19,24 +18,14 @@ export class ElementDesignerComponent implements OnInit {
   }
 
   elementClick(id: number){
+
     this.selectedItem = this.data[id];
     this.edit = true;
   }
 
-  getBorder(id: number){
-    if(this.selectedItem != null && (id === this.selectedItem.id))
-      return '5px solid';
-    else
-      return '0px';
-  }
 
   addButtonClick(){
-    if(this.edit)
-      this.edit = false;
-    else{
-      this.edit = true;
-    }
-    this.selectedItem = null;
+    this.edit = true;
   }
 
   onEditOff(message:string):void{
