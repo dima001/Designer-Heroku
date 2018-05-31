@@ -1,4 +1,4 @@
-import { ElementsService } from './../elements-service.service';
+import { ElementsService } from './../element-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class ElementDesignerComponent implements OnInit {
   data: any[] = [];
   edit: boolean = false;
-  selectedItem: any;
+  selectedItem: any = null;
   height: number;
+  
   constructor(private elementsService: ElementsService) { }
 
   ngOnInit() {
@@ -18,18 +19,28 @@ export class ElementDesignerComponent implements OnInit {
   }
 
   elementClick(id: number){
-
     this.selectedItem = this.data[id];
-    this.edit = true;
+    // this.edit = true;
   }
 
+  getBorder(id: number){
+    if(this.selectedItem != null && (id === this.selectedItem.id))
+      return '5px solid';
+    else
+      return '0px';
+  }
 
   addButtonClick(){
-    this.edit = true;
+    if(this.edit)
+      this.edit = false;
+    else{
+      this.edit = true;
+    }
+    this.selectedItem = null;
   }
 
   onEditOff(message:string):void{
-    this.edit=false;
+    this.edit = false;
     this.selectedItem = null;
   }
 

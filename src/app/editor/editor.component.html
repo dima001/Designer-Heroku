@@ -1,14 +1,22 @@
 <div>
   <span>Height:</span>
-  <input value={{height}} #heightIn> 
+  <input type="number" value={{height}} #heightIn> 
   <span>Width:</span>
-  <input value={{width}} #widthIn>
+  <input type="number" value={{width}} #widthIn>
   <span>Left:</span>
-  <input value={{position}} #leftIn>
+  <input type="number" value={{position}} #leftIn>
   <span>Top:</span>
-  <input value={{top}} #topIn>
+  <input type="number" value={{top}} #topIn>
   <span>Image:</span>
-  <span><input>
-  <button>Uploud</button></span>
+  <span>
+    <input id="file-select" #imageIn
+    (change)="onFileSelected($event)"
+    type="file" 
+    >
+    <button (click)="onUpload(image)">Upload</button>
+  </span>
   <button (click)="applyClick(heightIn.value, widthIn.value, leftIn.value, topIn.value)">Apply</button>
+</div>
+<div *ngIf="selectedFile">
+  <img src="selectedFile" alt="">
 </div>
