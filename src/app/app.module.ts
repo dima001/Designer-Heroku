@@ -1,4 +1,4 @@
-import { ElementsService } from './element-service.service';
+import { ElementsService } from './services/element-service.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

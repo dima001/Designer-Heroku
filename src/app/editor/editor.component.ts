@@ -1,4 +1,4 @@
-import { ElementsService } from './../element-service.service';
+import { ElementsService } from '../services/element-service.service';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Server } from 'selenium-webdriver/safari';
@@ -62,22 +62,25 @@ export class EditorComponent{
   //upload function
   onUpload(imageSel: string){
     //calls for javascript upload function
-    scriptUpload.UploadFiles('http://www.sendrelax.com/WebService.asmx/UploadFiles', this.fileSelected,
-      function (res) {
-        var FileURL = '';
-        if (res != null)
-        if (res.getElementsByTagName)
-        if (res.getElementsByTagName('string').length >0)
-          FileURL = res.getElementsByTagName('string')[0].innerHTML;
-        if (FileURL != '') {
-          //save the url of the image
-          $('body').data('img', 'http://www.sendrelax.com' + FileURL.toString());
+    if(this.fileSelected)
+      scriptUpload.UploadFiles('http://www.sendrelax.com/WebService.asmx/UploadFiles', this.fileSelected,
+        function (res) {
+          var FileURL = '';
+          if (res != null)
+          if (res.getElementsByTagName)
+          if (res.getElementsByTagName('string').length >0)
+            FileURL = res.getElementsByTagName('string')[0].innerHTML;
+          if (FileURL != '') {
+            //save the url of the image
+            $('body').data('img', 'http://www.sendrelax.com' + FileURL.toString());
+          }
+        },
+        function(err) {
+          alert('err');
         }
-      },
-      function(err) {
-        alert('err');
-      }
-    );
+      );
+    else
+      alert("Please select file first.");
   }
     
 }

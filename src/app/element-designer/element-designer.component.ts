@@ -1,4 +1,4 @@
-import { ElementsService } from './../element-service.service';
+import { ElementsService } from '../services/element-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
