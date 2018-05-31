@@ -15,7 +15,7 @@
     >
     <button (click)="onUpload(image)">Upload</button>
   </span>
-  <button (click)="applyClick(heightIn.value, widthIn.value, leftIn.value, topIn.value)">Apply</button>
+  <button (click)="onApplyClick(heightIn.value, widthIn.value, leftIn.value, topIn.value)">Apply</button>
 </div>
 <div *ngIf="selectedFile">
   <img src="selectedFile" alt="">

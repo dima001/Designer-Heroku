@@ -6,23 +6,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './element-designer.component.html',
   styleUrls: ['./element-designer.component.css']
 })
+
 export class ElementDesignerComponent implements OnInit {
-  data: any[] = [];
-  edit: boolean = false;
-  selectedItem: any = null;
-  height: number;
+  data: any[] = []; //elments data array
+  addMode: boolean = false; //flag to check if we in addMode
+  selectedItem: any = null; //var to check if we select elment to edit 
   
-  constructor(private elementsService: ElementsService) { }
+  constructor(private elementsService: ElementsService) { } //c-tor that and conection to our service
 
   ngOnInit() {
-    this.data = this.elementsService.getAll();
+    this.data = this.elementsService.getAll(); //get all elments from the service
   }
 
-  elementClick(id: number){
+  //on elment click, we configure witch elment to send to editor component
+  onElementClick(id: number){
     this.selectedItem = this.data[id];
-    // this.edit = true;
+    this.addMode = false;
   }
 
+  //change the border of selected(for edit) elment if one was choose
   getBorder(id: number){
     if(this.selectedItem != null && (id === this.selectedItem.id))
       return '5px solid';
@@ -30,20 +32,23 @@ export class ElementDesignerComponent implements OnInit {
       return '0px';
   }
 
+  //opens a edit panel
   addButtonClick(){
-    if(this.edit)
-      this.edit = false;
+    if(this.addMode)
+      this.addMode = false;
     else{
-      this.edit = true;
+      this.addMode = true;
     }
     this.selectedItem = null;
   }
 
+  //when we finish to edit old elment or add new one, this function closes the edit panel
   onEditOff(message:string):void{
-    this.edit = false;
+    this.addMode = false;
     this.selectedItem = null;
   }
 
+  //export all elments to Json 
   exportClick(){
     let data = this.elementsService.getAll();
 

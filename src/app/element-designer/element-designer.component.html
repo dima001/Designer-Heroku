@@ -2,7 +2,7 @@
   <ul *ngFor="let item of data">
       <img class="image" src={{item.image}} alt="element"  [style.height.px]="item.height" 
       [style.width.px]="item.width" [style.position]= "absolute" [style.left.px]="item.position" [style.top.px]="item.top" [style.border]="getBorder(item.id)" 
-      (click)="elementClick(item.id)">
+      (click)="onElementClick(item.id)">
   </ul>
 </div>
 
@@ -27,7 +27,7 @@
     [image]='selectedItem.image'>
   </editor>
 
-  <editor *ngIf="edit"
+  <editor *ngIf="addMode"
   (notify)='onEditOff($event)' >
   </editor>
 </div>

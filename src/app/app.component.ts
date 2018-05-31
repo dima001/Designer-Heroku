@@ -8,7 +8,6 @@ import { ElementsService } from './element-service.service';
 })
 export class AppComponent {
   title = 'Designer';
-  editMode = false;
 
   constructor() { }
 
