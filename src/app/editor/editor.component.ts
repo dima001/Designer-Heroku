@@ -61,8 +61,9 @@ export class EditorComponent{
 
   //upload function
   onUpload(imageSel: string){
-    //calls for javascript upload function
+    //check if user selected a file before we upload it
     if(this.fileSelected)
+    //calls for javascript upload function
       scriptUpload.UploadFiles('http://www.sendrelax.com/WebService.asmx/UploadFiles', this.fileSelected,
         function (res) {
           var FileURL = '';
